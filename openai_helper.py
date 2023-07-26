@@ -7,6 +7,7 @@ import pandas as pd
 openai.api_key = openai_key
 
 def extract_kpop_data(text):
+    openai.api_key = os.getenv('OPENAI_API_KEY')  # Moved here
     prompt = get_prompt_kpop() + text
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
@@ -25,6 +26,7 @@ def extract_kpop_data(text):
         "Word": ["", "", "", "", ""],
         "Count": ["", "", "", "", ""]
     })
+
 
 
 
